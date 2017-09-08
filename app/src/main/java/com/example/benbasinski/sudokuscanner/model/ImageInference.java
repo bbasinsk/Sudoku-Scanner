@@ -1,4 +1,4 @@
-package com.example.benbasinski.opencvtest.model;
+package com.example.benbasinski.sudokuscanner.model;
 
 import android.content.Context;
 import android.content.res.AssetManager;
