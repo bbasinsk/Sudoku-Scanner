@@ -1,4 +1,4 @@
-package com.example.benbasinski.opencvtest;
+package com.example.benbasinski.sudokuscanner;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
