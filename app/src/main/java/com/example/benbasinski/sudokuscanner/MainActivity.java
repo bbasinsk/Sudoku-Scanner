@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
                     int id = getResources().getIdentifier(name, "id", getPackageName());
                     textViews[i] = (TextView) findViewById(id);
                     try {
-                        textViews[i].setText(predictions[i]);
+                        textViews[i].setText(predictions[i] + "");
                     } catch (Exception e) {
                         Log.d("EXCEPTION", e.toString());
                     }
@@ -268,7 +268,8 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         thresh.release();
         hierarchy.release();
 
-        return imgToReturn;
+        //rotate
+        return imageHelper.rotateMat(imgToReturn);
     }
 
 

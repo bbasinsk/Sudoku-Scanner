@@ -2,6 +2,7 @@ package com.example.benbasinski.sudokuscanner.image;
 
 import android.util.Log;
 
+import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
@@ -47,6 +48,17 @@ public class ImageHelper {
         }
 
         return intArray;
+    }
+
+    public Mat rotateMat(Mat orig) {
+        Mat transpose = new Mat();
+        Mat mRgbaF = new Mat();
+        // Rotate orig 90 degrees
+        Core.transpose(orig, transpose);
+        Imgproc.resize(transpose, mRgbaF, orig.size(), 0,0, 0);
+        Core.flip(mRgbaF, orig, 1 );
+
+        return orig; // This function must return
     }
 
     public Point[] findCorners(List<MatOfPoint> contours) {
