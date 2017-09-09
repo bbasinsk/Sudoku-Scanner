@@ -1,5 +1,8 @@
 package com.example.benbasinski.sudokuscanner;
 
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,9 +10,6 @@ import android.util.Log;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.benbasinski.sudokuscanner.image.ImageHelper;
 import com.example.benbasinski.sudokuscanner.model.ImageInference;
@@ -20,6 +20,7 @@ import org.opencv.android.JavaCameraView;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.Point;
@@ -27,10 +28,13 @@ import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
+public class CameraPreviewActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
 
     private static final String TAG = "OCVSample::Activity";
     private Mat inputImgCol;
@@ -70,6 +74,30 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         }
     };
 
+    public void getInference(View view)
+    {
+        Intent intent = new Intent(CameraPreviewActivity.this, InferenceActivity.class);
+        Bundle extras = new Bundle();
+
+        Mat grayCrop = new Mat(resizedGray.rows(), resizedGray.cols(), CvType.CV_8UC1);
+        resizedGray.convertTo(grayCrop, CvType.CV_8UC1);
+
+        Bitmap bm = Bitmap.createBitmap(grayCrop.cols(), grayCrop.rows(),Bitmap.Config.ARGB_8888);
+        Utils.matToBitmap(grayCrop, bm);
+        String path = saveToInternalStorage(bm);
+
+        double[] c = new double[8];
+        for (int i = 0; i < 4; i++) {
+            c[2*i] = corners[i].x;
+            c[2*i+1] = corners[i].y;
+        }
+
+        extras.putString("IMG_PATH", path);
+        extras.putDoubleArray("CORNERS", c);
+        intent.putExtras(extras);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "called onCreate");
@@ -77,97 +105,10 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
         // Set up camera
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_camera_preview);
         mOpenCvCameraView = (JavaCameraView) findViewById(R.id.camera_view);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
-
-        //set up the inference model
-        imageInference = new ImageInference(getApplicationContext());
-
-        imageHelper = new ImageHelper();
-
-
-        final Button button = (Button) findViewById(R.id.button);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                setContentView(R.layout.activity_result);
-
-                //Save Image by Button Click
-                Mat cropped = imageHelper.cropMat(resizedGray, corners);
-
-                Mat squareCrop = new Mat();
-                Imgproc.resize(cropped, squareCrop, new Size(297, 313));
-
-                squareCrop = squareCrop.rowRange(16, (int) squareCrop.size().height);
-                //297x297
-
-                Mat[] digitCrops = imageHelper.divideMat(squareCrop);
-
-                int[] predictions = new int[digitCrops.length];
-
-                for (int digitInd = 0; digitInd < digitCrops.length; digitInd++) {
-                    // Convert img to array
-
-
-                    int[] inputIntImgArray = imageHelper.matToArray(digitCrops[digitInd]);
-                    float[] inputFloatImgArray = new float[inputIntImgArray.length];
-                    for (int i = 0; i < inputIntImgArray.length; i++) {
-                        inputFloatImgArray[i] = (float) inputIntImgArray[i] / 255;
-                    }
-
-                    float[] results = imageInference.getImageProb(inputFloatImgArray);
-
-                    float highestConfidence = 0;
-                    for (int i = 0; i < results.length; i++) {
-                        if (results[i] > highestConfidence) {
-                            predictions[digitInd] = i;
-                            highestConfidence = results[i];
-                        }
-                    }
-
-                    Log.d("CLASSIFIER_RESULTS - " + digitInd,
-                            "\n0: " + results[0] +
-                                    "\n1: " + results[1] +
-                                    "\n2: " + results[2] +
-                                    "\n3: " + results[3] +
-                                    "\n4: " + results[4] +
-                                    "\n5: " + results[5] +
-                                    "\n6: " + results[6] +
-                                    "\n7: " + results[7] +
-                                    "\n8: " + results[8] +
-                                    "\n9: " + results[9]);
-                }
-
-                // convert to bitmap:
-                Mat toShow = digitCrops[2];
-                Bitmap bm = Bitmap.createBitmap(toShow.cols(), toShow.rows(),Bitmap.Config.ARGB_8888);
-                Utils.matToBitmap(toShow, bm);
-
-                // find the imageview and draw it!
-                ImageView iv = (ImageView) findViewById(R.id.imageView1);
-                iv.setImageBitmap(bm);
-
-
-                TextView[] textViews = new TextView[81];
-
-                for (int i = 0; i < predictions.length; i++) {
-                    String name = "textView"+(i+1);
-                    int id = getResources().getIdentifier(name, "id", getPackageName());
-                    textViews[i] = (TextView) findViewById(id);
-                    try {
-                        textViews[i].setText(predictions[i] + "");
-                    } catch (Exception e) {
-                        Log.d("EXCEPTION", e.toString());
-                    }
-
-                }
-
-            }
-        });
-
     }
 
 
@@ -215,6 +156,8 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         //Garbage collect
         System.gc();
 
+        ImageHelper imageHelper = new ImageHelper();
+
         //Init mats
         Mat resizedCol = new Mat();
         Mat blurred = new Mat();
@@ -238,7 +181,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
 
         Imgproc.GaussianBlur(resizedGray, blurred, new Size(5, 5) ,0 ,0);
-
 
         Imgproc.adaptiveThreshold(blurred, thresh, 255.0, Imgproc.ADAPTIVE_THRESH_MEAN_C, Imgproc.THRESH_BINARY, 5, 2);
 
@@ -269,8 +211,30 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         hierarchy.release();
 
         //rotate
-        return imageHelper.rotateMat(imgToReturn);
+        return imgToReturn;
     }
 
+    private String saveToInternalStorage(Bitmap bitmapImage){
+        ContextWrapper cw = new ContextWrapper(getApplicationContext());
+        // path to /data/data/yourapp/app_data/imageDir
+        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+        // Create imageDir
+        File mypath=new File(directory,"img.jpg");
 
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return directory.getAbsolutePath();
+    }
 }

@@ -2,7 +2,6 @@ package com.example.benbasinski.sudokuscanner.image;
 
 import android.util.Log;
 
-import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
@@ -16,12 +15,7 @@ import java.util.List;
 
 public class ImageHelper {
 
-    private Point[] corners;
     private final String TAG = "ImageHelper";
-
-    public ImageHelper() {
-
-    }
 
     private Mat arrayToMat(double[][] array) {
         int rows = array.length;
@@ -48,17 +42,6 @@ public class ImageHelper {
         }
 
         return intArray;
-    }
-
-    public Mat rotateMat(Mat orig) {
-        Mat transpose = new Mat();
-        Mat mRgbaF = new Mat();
-        // Rotate orig 90 degrees
-        Core.transpose(orig, transpose);
-        Imgproc.resize(transpose, mRgbaF, orig.size(), 0,0, 0);
-        Core.flip(mRgbaF, orig, 1 );
-
-        return orig; // This function must return
     }
 
     public Point[] findCorners(List<MatOfPoint> contours) {
@@ -120,7 +103,7 @@ public class ImageHelper {
         } catch (Exception e) {
             Log.d(TAG, "Can't find puzzle");
         }
-        corners = new Point[4];
+        Point[] corners = new Point[4];
 
         // the four corners from top left going clockwise
         corners[0] = topLeft;
