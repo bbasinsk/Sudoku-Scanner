@@ -6,8 +6,10 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -111,19 +113,23 @@ public class InferenceActivity extends AppCompatActivity {
         }
 
         // convert to bitmap:
-        Mat toShow = digitCrops[2];
+        Mat toShow = squareCrop;
         Bitmap bm = Bitmap.createBitmap(toShow.cols(), toShow.rows(),Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(toShow, bm);
 
         // find the imageview and draw it!
-        ImageView iv = (ImageView) findViewById(R.id.imageView1);
-        iv.setImageBitmap(bm);
+        ImageView sudokuImg = (ImageView) findViewById(R.id.sudokuImg);
+        sudokuImg.setImageBitmap(bm);
+        sudokuImg.setAlpha(0.0f);
 
 
+//        GridView gridView = (GridView)findViewById(R.id.sudokuGrid);
+//        SudokuGridAdapter sudokuAdapter = new SudokuGridAdapter(this, predictions);
+//        gridView.setAdapter(sudokuAdapter);
         TextView[] textViews = new TextView[81];
 
         for (int i = 0; i < predictions.length; i++) {
-            String name = "textView"+(i+1);
+            String name = "digit"+(i+1);
             int id = getResources().getIdentifier(name, "id", getPackageName());
             textViews[i] = (TextView) findViewById(id);
             try {
@@ -144,6 +150,22 @@ public class InferenceActivity extends AppCompatActivity {
             }
         });
 
+        Button showPuzzle = (Button) findViewById(R.id.buttonShowImg);
+        showPuzzle.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                ImageView sudokuImg = (ImageView) findViewById(R.id.sudokuImg);
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    sudokuImg.setAlpha(0.9f);
+                    return true;
+                }
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    sudokuImg.setAlpha(0.0f);
+                    return true;
+                }
+                return false;
+            }
+        });
 
     }
 
@@ -159,5 +181,4 @@ public class InferenceActivity extends AppCompatActivity {
             return null;
         }
     }
-
 }

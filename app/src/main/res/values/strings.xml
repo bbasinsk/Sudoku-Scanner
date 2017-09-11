@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Sudoku Scanner</string>
     <string name="title_activity_inference">InferenceActivity</string>
+    <string name="digit">0</string>
 </resources>
