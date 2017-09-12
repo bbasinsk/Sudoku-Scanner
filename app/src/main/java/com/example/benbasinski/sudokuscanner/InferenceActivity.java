@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,6 +35,7 @@ public class InferenceActivity extends AppCompatActivity {
     ImageInference imageInference;
     Mat resizedGray;
     Point[] corners;
+    int[] predictions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +79,8 @@ public class InferenceActivity extends AppCompatActivity {
 
         Mat[] digitCrops = imageHelper.divideMat(squareCrop);
 
-        int[] predictions = new int[digitCrops.length];
+        predictions = new int[digitCrops.length];
+        double[] confident = new double[digitCrops.length];
 
         for (int digitInd = 0; digitInd < digitCrops.length; digitInd++) {
             // Convert img to array
@@ -98,6 +101,8 @@ public class InferenceActivity extends AppCompatActivity {
                     highestConfidence = results[i];
                 }
             }
+
+            confident[digitInd] = highestConfidence;
 
             Log.d("CLASSIFIER_RESULTS - " + digitInd,
                     "\n0: " + results[0] +
@@ -123,30 +128,29 @@ public class InferenceActivity extends AppCompatActivity {
         sudokuImg.setAlpha(0.0f);
 
 
-//        GridView gridView = (GridView)findViewById(R.id.sudokuGrid);
-//        SudokuGridAdapter sudokuAdapter = new SudokuGridAdapter(this, predictions);
-//        gridView.setAdapter(sudokuAdapter);
-        TextView[] textViews = new TextView[81];
+        EditText[] textViews = new EditText[81];
 
         for (int i = 0; i < predictions.length; i++) {
             String name = "digit"+(i+1);
             int id = getResources().getIdentifier(name, "id", getPackageName());
-            textViews[i] = (TextView) findViewById(id);
+            textViews[i] = (EditText) findViewById(id);
             try {
                 textViews[i].setText(String.valueOf(predictions[i]));
             } catch (Exception e) {
                 Log.d("EXCEPTION", e.toString());
             }
+            if (confident[i] < 0.95) {
+                textViews[i].setBackgroundResource(R.color.colorAccent);
+                textViews[i].setAlpha(0.3f);
+            }
 
         }
-
 
         Button backButton = (Button) findViewById(R.id.buttonBack);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent backIntent = new Intent(InferenceActivity.this, CameraPreviewActivity.class);
-                startActivity(backIntent);
+                onBackPressed();
             }
         });
 
@@ -167,6 +171,25 @@ public class InferenceActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void getSolution(View view) {
+        int[] digits = new int[81];
+        EditText[] textViews = new EditText[81];
+        for (int i = 0; i < predictions.length; i++) {
+            String name = "digit"+(i+1);
+            int id = getResources().getIdentifier(name, "id", getPackageName());
+            textViews[i] = (EditText) findViewById(id);
+            digits[i] = Integer.valueOf(textViews[i].getText().toString());
+        }
+
+        Intent intent = new Intent(InferenceActivity.this, SolutionActivity.class);
+        Bundle extras = new Bundle();
+
+
+        extras.putIntArray("DIGITS", digits);
+        intent.putExtras(extras);
+        startActivity(intent);
     }
 
     private Bitmap loadImageFromStorage(String path)

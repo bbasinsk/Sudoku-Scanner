@@ -74,8 +74,7 @@ public class CameraPreviewActivity extends AppCompatActivity implements CameraBr
         }
     };
 
-    public void getInference(View view)
-    {
+    public void getInference(View view) {
         Intent intent = new Intent(CameraPreviewActivity.this, InferenceActivity.class);
         Bundle extras = new Bundle();
 

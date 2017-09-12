@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="315dp"
         android:layout_height="315dp"
-        android:layout_marginStart="200dp"
+        android:layout_marginStart="150dp"
         android:id="@+id/sudokuFrame" >
 
         <!--<com.example.benbasinski.sudokuscanner.gui.SudokuView-->
@@ -36,55 +36,56 @@
 
             <!--1-->
             <TableRow>
-                <TextView
+
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit1"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit2"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit3"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit4"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit5"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit6"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit7"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit8"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit9"
@@ -94,55 +95,55 @@
 
             <!--2-->
             <TableRow>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit10"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit11"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit12"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit13"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit14"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit15"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit16"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit17"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit18"
@@ -152,55 +153,55 @@
 
             <!--3-->
             <TableRow>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit19"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit20"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit21"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit22"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit23"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit24"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit25"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit26"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit27"
@@ -210,55 +211,55 @@
 
             <!--4-->
             <TableRow>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit28"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit29"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit30"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit31"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit32"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit33"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit34"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit35"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit36"
@@ -268,55 +269,55 @@
 
             <!--5-->
             <TableRow>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit37"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit38"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit39"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit40"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit41"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit42"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit43"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit44"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit45"
@@ -326,55 +327,55 @@
 
             <!--6-->
             <TableRow>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit46"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit47"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit48"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit49"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit50"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit51"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit52"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit53"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit54"
@@ -384,55 +385,55 @@
 
             <!--7-->
             <TableRow>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit55"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit56"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit57"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit58"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit59"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit60"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit61"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit62"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit63"
@@ -442,55 +443,55 @@
 
             <!--8-->
             <TableRow>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit64"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit65"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit66"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit67"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit68"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit69"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit70"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit71"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit72"
@@ -500,55 +501,55 @@
 
             <!--9-->
             <TableRow>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit73"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit74"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit75"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit76"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit77"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit78"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit79"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit80"
                     android:text="@string/digit"
                     android:background="@color/digitBg"/>
-                <TextView
+                <EditText
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:id="@+id/digit81"
@@ -573,14 +574,6 @@
     </FrameLayout>
 
 
-    <TextView
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:id="@+id/digit1"
-        android:text="@string/digit"
-        android:layout_alignParentBottom="true"
-        android:background="@color/digitBg"/>
-
     <Button
         android:id="@+id/buttonBack"
         android:layout_width="100dp"
@@ -591,8 +584,9 @@
     <Button
         android:id="@+id/buttonShowImg"
         android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="60dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
         android:text="Show puzzle" />
 
     <Button
@@ -600,6 +594,7 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="Solve"
+        android:onClick="getSolution"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
