@@ -12,10 +12,10 @@ public class ImageInference {
 
     private static ImageInference imageInferenceInstance;
     private TensorFlowInferenceInterface inferenceInterface;
-    private static final String MODEL_FILE = "file:///android_asset/opt_digits.pb";
+    private static final String MODEL_FILE = "file:///android_asset/opt_digits_w_drop.pb";
     private static final String INPUT_NODE = "conv2d_1_input";
-    private static final String[] OUTPUT_NODES = {"dense_2/Softmax"};
-    private static final String OUTPUT_NODE = "dense_2/Softmax";
+    private static final String[] OUTPUT_NODES = {"dense_3/Softmax"};
+    private static final String OUTPUT_NODE = "dense_3/Softmax";
     private static final long[] INPUT_SIZE = {1, 33, 33, 1};
     private static final int OUTPUT_SIZE = 10;
 
