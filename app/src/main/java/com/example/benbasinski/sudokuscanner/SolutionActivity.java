@@ -3,6 +3,7 @@ package com.example.benbasinski.sudokuscanner;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,8 +17,16 @@ public class SolutionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solution);
+
+        // toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // add back arrow to toolbar
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         Bundle extras = getIntent().getExtras();
         int[] pre_solved = extras.getIntArray("DIGITS");
@@ -38,6 +47,16 @@ public class SolutionActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     private void findSolution(int[] pre_solved) {
         solutions = new char[81];
         char[][] board = new char[9][9];
@@ -54,10 +73,6 @@ public class SolutionActivity extends AppCompatActivity {
         for (int i = 0; i < 81; i++) {
             solutions[i] = board[i/9][i%9];
         }
-    }
-
-    public void backInference(View view) {
-        onBackPressed();
     }
 
     public void solveSudoku(char[][] board) {

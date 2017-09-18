@@ -8,16 +8,9 @@
     tools:context="com.example.benbasinski.sudokuscanner.SolutionActivity"
     tools:showIn="@layout/activity_solution">
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:onClick="backInference"
-        android:text="Back"/>
-
     <FrameLayout
         android:layout_width="315dp"
         android:layout_height="315dp"
-        android:layout_marginStart="150dp"
         android:id="@+id/sudokuFrame" >
 
         <!--<com.example.benbasinski.sudokuscanner.gui.SudokuView-->

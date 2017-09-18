@@ -25,12 +25,16 @@
         </activity>
         <activity
             android:name=".InferenceActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
             android:name=".SolutionActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_solution"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
